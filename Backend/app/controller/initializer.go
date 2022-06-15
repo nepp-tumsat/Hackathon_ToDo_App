@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
+	"github.com/nepp-tumsat/Hackathon_ToDo_App/app/controller/task"
 	"github.com/nepp-tumsat/Hackathon_ToDo_App/app/controller/user"
 	"gorm.io/gorm"
 )
@@ -14,6 +15,7 @@ func InitalizeServer(db *gorm.DB) *echo.Echo {
 	handlers := initializeHandlers(db)
 
 	user.UserRoute(e, handlers.User)
+	task.TaskRoute(e, handlers.Task)
 	e.GET("/server-health", healthCheck)
 	return e
 }
@@ -23,11 +25,13 @@ func healthCheck(ctx echo.Context) error {
 }
 
 type handlers struct {
-	User  *user.UserHandler
+	User *user.UserHandler
+	Task *task.TaskHandler
 }
 
 func initializeHandlers(db *gorm.DB) handlers {
 	return handlers{
-		User:  user.InitializeUserHandler(db),
+		User: user.InitializeUserHandler(db),
+		Task: task.InitializeTaskHandler(db),
 	}
 }
