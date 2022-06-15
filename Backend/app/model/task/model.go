@@ -1,7 +1,7 @@
 package task
 
 import (
-	"time"
+	// "time"
 
 	"gorm.io/gorm"
 )
@@ -11,13 +11,15 @@ type Task struct {
 	UserID int64     `json:"userid"`
 	Task   string    `json:"task"`
 	Exp    int64     `json:"exp"`
-	Due    time.Time `json:"due"`
+	// Due    time.Time `json:"due"`
+	Due    string `json:"due"`
+
 	Done   bool      `json:"done"`
 }
 
 type TaskModel interface {
 	CreateTask(task *Task) *Task
-	FindTask(id string) *Task
+	FindTask(id int64) *Task
 }
 
 type taskModel struct {

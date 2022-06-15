@@ -12,7 +12,7 @@ type User struct {
 
 type UserModel interface {
 	CreateUser(user *User) *User
-	FindUser(id string) *User
+	FindUser(id int64) *User
 	UpdateUser(user *User) *User
 }
 
