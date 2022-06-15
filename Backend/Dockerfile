@@ -7,7 +7,7 @@ COPY ./app/main.go /go
 COPY ./go.mod ./go.sum /go/
 
 RUN go get github.com/labstack/echo
-RUN go get github.com/jinzhu/gorm
+RUN go get gorm.io/gorm
 RUN go get github.com/go-sql-driver/mysql
 RUN go mod tidy
 
