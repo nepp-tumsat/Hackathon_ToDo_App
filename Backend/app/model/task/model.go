@@ -7,7 +7,7 @@ import (
 )
 
 type Task struct {
-	ID     int64     `json:"id" gorm:"primaryKey"`
+	ID     int     `json:"id" gorm:"primaryKey"`
 	UserID int64     `json:"userid"`
 	Task   string    `json:"task"`
 	Exp    int64     `json:"exp"`
@@ -19,7 +19,8 @@ type Task struct {
 
 type TaskModel interface {
 	CreateTask(task *Task) *Task
-	FindTask(id int64) *Task
+	GetTask(id int) *Task
+	UpdateTask(task *Task) *Task
 }
 
 type taskModel struct {
@@ -39,8 +40,15 @@ func (t *taskModel) CreateTask(task *Task) *Task {
 	return task
 }
 
-func (t *taskModel) FindTask(id int64) *Task {
+func (t *taskModel) GetTask(id int) *Task {
 	task := &Task{ID: id}
 	t.db.Where(t).First(&task)
+	return task
+}
+
+func (t *taskModel) UpdateTask(task *Task) *Task {
+	if err := t.db.Save(task).Error; err != nil {
+		return nil
+	}
 	return task
 }
