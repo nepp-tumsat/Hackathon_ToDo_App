@@ -18,6 +18,7 @@
 		67F41B5F285B8F3B00EB1F7B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F41B5E285B8F3B00EB1F7B /* UIView+Extension.swift */; };
 		67F41B64285B996900EB1F7B /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F41B62285B996900EB1F7B /* AddViewController.swift */; };
 		67F41B65285B996900EB1F7B /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F41B63285B996900EB1F7B /* AddViewController.xib */; };
+		67F41B68285B9D8F00EB1F7B /* ToDoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F41B67285B9D8F00EB1F7B /* ToDoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		67F41B5E285B8F3B00EB1F7B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		67F41B62285B996900EB1F7B /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		67F41B63285B996900EB1F7B /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
+		67F41B67285B9D8F00EB1F7B /* ToDoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				67F41B5A285B8B6E00EB1F7B /* ToDoTableViewCell.swift */,
 				67F41B62285B996900EB1F7B /* AddViewController.swift */,
 				67F41B5E285B8F3B00EB1F7B /* UIView+Extension.swift */,
+				67F41B66285B9D7D00EB1F7B /* Model */,
 				67F41B4F285B7B9E00EB1F7B /* HomeViewController.xib */,
 				67F41B5B285B8B6E00EB1F7B /* ToDoTableViewCell.xib */,
 				67F41B63285B996900EB1F7B /* AddViewController.xib */,
@@ -80,6 +83,14 @@
 				67F41B48285B7B6700EB1F7B /* Info.plist */,
 			);
 			path = ToDoApp;
+			sourceTree = "<group>";
+		};
+		67F41B66285B9D7D00EB1F7B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				67F41B67285B9D8F00EB1F7B /* ToDoModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67F41B68285B9D8F00EB1F7B /* ToDoModel.swift in Sources */,
 				67F41B5F285B8F3B00EB1F7B /* UIView+Extension.swift in Sources */,
 				67F41B3B285B7B6600EB1F7B /* AppDelegate.swift in Sources */,
 				67F41B64285B996900EB1F7B /* AddViewController.swift in Sources */,

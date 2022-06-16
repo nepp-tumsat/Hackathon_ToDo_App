@@ -9,7 +9,7 @@ import UIKit
 
 final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    let ToDoList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
+//    let ToDoList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
 
     private var barButton: UIBarButtonItem!
     
@@ -33,12 +33,12 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ToDoList.count
+        return ToDoModel.ToDoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
-        cell.textLabel?.text = ToDoList[indexPath.row]
+        cell.textLabel?.text = ToDoModel.ToDoList[indexPath.row]
         return cell
     }
     /*
