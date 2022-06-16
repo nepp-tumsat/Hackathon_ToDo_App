@@ -2,33 +2,53 @@ package task
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/labstack/echo"
 	taskModel "github.com/nepp-tumsat/Hackathon_ToDo_App/app/model/task"
+	userModel "github.com/nepp-tumsat/Hackathon_ToDo_App/app/model/user"
 )
 
 type TaskHandler struct {
-	model taskModel.TaskModel
+	model  taskModel.TaskModel
+	umodel userModel.UserModel
 }
 
-func NewTaskHandler(u taskModel.TaskModel) *TaskHandler {
+func NewTaskHandler(t taskModel.TaskModel, u userModel.UserModel) *TaskHandler {
 	return &TaskHandler{
-		model: u,
+		model:  t,
+		umodel: u,
 	}
 }
-func (u *TaskHandler) CreateTask(c echo.Context) error {
+func (t *TaskHandler) CreateTask(c echo.Context) error {
 	task := new(taskModel.Task)
 	if err := c.Bind(task); err != nil {
 		return err
 	}
-	if task.Task == "" {
-		return &echo.HTTPError{
-			Code:    http.StatusBadRequest,
-			Message: "invalid name",
-		}
-	}
 
-	u.model.CreateTask(task)
+	t.model.CreateTask(task)
 
 	return c.JSON(http.StatusCreated, task)
+}
+func (t *TaskHandler) CompleteTask(c echo.Context) error {
+	paramID := c.Param("id")
+	taskID, _ := strconv.Atoi(paramID)
+
+
+	task := t.model.GetTask(taskID)
+	if task.Done == true {
+		return &echo.HTTPError{
+			Code:    http.StatusBadRequest,
+			Message: "完了済みです",
+		}
+	}
+	task.Done = true
+	t.model.UpdateTask(task)
+
+	user := t.umodel.FindUser(task.UserID)
+	user.Level += float64(task.Exp)
+
+	t.umodel.UpdateUser(user)
+
+	return c.JSON(http.StatusCreated, user)
 }
