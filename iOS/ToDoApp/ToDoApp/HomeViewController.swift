@@ -7,15 +7,40 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    let ToDoList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
+
+    private var barButton: UIBarButtonItem!
+    
+    @IBOutlet private weak var toDoTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
-        // Do any additional setup after loading the view.
+        toDoTableView.register(ToDoTableViewCell.nib, forCellReuseIdentifier: ToDoTableViewCell.identifier)
+        
+        toDoTableView.delegate = self
+        toDoTableView.dataSource = self
+        
+        title = "ToDoリスト"
+        barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(click))
+        navigationItem.rightBarButtonItem = barButton
     }
-
-
+    
+    @objc func click() {
+        let edit = AddViewController()
+        navigationController?.pushViewController(edit, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ToDoList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
+        cell.textLabel?.text = ToDoList[indexPath.row]
+        return cell
+    }
     /*
     // MARK: - Navigation
 

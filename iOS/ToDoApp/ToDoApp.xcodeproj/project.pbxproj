@@ -13,6 +13,11 @@
 		67F41B47285B7B6700EB1F7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67F41B45285B7B6700EB1F7B /* LaunchScreen.storyboard */; };
 		67F41B50285B7B9E00EB1F7B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F41B4E285B7B9E00EB1F7B /* HomeViewController.swift */; };
 		67F41B51285B7B9E00EB1F7B /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F41B4F285B7B9E00EB1F7B /* HomeViewController.xib */; };
+		67F41B5C285B8B6E00EB1F7B /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F41B5A285B8B6E00EB1F7B /* ToDoTableViewCell.swift */; };
+		67F41B5D285B8B6E00EB1F7B /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F41B5B285B8B6E00EB1F7B /* ToDoTableViewCell.xib */; };
+		67F41B5F285B8F3B00EB1F7B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F41B5E285B8F3B00EB1F7B /* UIView+Extension.swift */; };
+		67F41B64285B996900EB1F7B /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F41B62285B996900EB1F7B /* AddViewController.swift */; };
+		67F41B65285B996900EB1F7B /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F41B63285B996900EB1F7B /* AddViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		67F41B48285B7B6700EB1F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67F41B4E285B7B9E00EB1F7B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		67F41B4F285B7B9E00EB1F7B /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		67F41B5A285B8B6E00EB1F7B /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
+		67F41B5B285B8B6E00EB1F7B /* ToDoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToDoTableViewCell.xib; sourceTree = "<group>"; };
+		67F41B5E285B8F3B00EB1F7B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		67F41B62285B996900EB1F7B /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		67F41B63285B996900EB1F7B /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +69,12 @@
 				67F41B3A285B7B6600EB1F7B /* AppDelegate.swift */,
 				67F41B3C285B7B6600EB1F7B /* SceneDelegate.swift */,
 				67F41B4E285B7B9E00EB1F7B /* HomeViewController.swift */,
+				67F41B5A285B8B6E00EB1F7B /* ToDoTableViewCell.swift */,
+				67F41B62285B996900EB1F7B /* AddViewController.swift */,
+				67F41B5E285B8F3B00EB1F7B /* UIView+Extension.swift */,
 				67F41B4F285B7B9E00EB1F7B /* HomeViewController.xib */,
+				67F41B5B285B8B6E00EB1F7B /* ToDoTableViewCell.xib */,
+				67F41B63285B996900EB1F7B /* AddViewController.xib */,
 				67F41B43285B7B6700EB1F7B /* Assets.xcassets */,
 				67F41B45285B7B6700EB1F7B /* LaunchScreen.storyboard */,
 				67F41B48285B7B6700EB1F7B /* Info.plist */,
@@ -125,7 +140,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67F41B5D285B8B6E00EB1F7B /* ToDoTableViewCell.xib in Resources */,
 				67F41B47285B7B6700EB1F7B /* LaunchScreen.storyboard in Resources */,
+				67F41B65285B996900EB1F7B /* AddViewController.xib in Resources */,
 				67F41B44285B7B6700EB1F7B /* Assets.xcassets in Resources */,
 				67F41B51285B7B9E00EB1F7B /* HomeViewController.xib in Resources */,
 			);
@@ -138,9 +155,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67F41B5F285B8F3B00EB1F7B /* UIView+Extension.swift in Sources */,
 				67F41B3B285B7B6600EB1F7B /* AppDelegate.swift in Sources */,
+				67F41B64285B996900EB1F7B /* AddViewController.swift in Sources */,
 				67F41B3D285B7B6600EB1F7B /* SceneDelegate.swift in Sources */,
 				67F41B50285B7B9E00EB1F7B /* HomeViewController.swift in Sources */,
+				67F41B5C285B8B6E00EB1F7B /* ToDoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
