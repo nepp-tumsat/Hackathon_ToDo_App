@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	dsn := "root:password@tcp(localhost:3306)/todo_db?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:password@tcp(db:3306)/todo_db?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err)
@@ -43,11 +43,11 @@ func main() {
 
 // func newDBConfig() dbConfig {
 // 	return dbConfig{
-// 		User:     os.Getenv("USER"),
-// 		Password: os.Getenv("PASSWORD"),
-// 		Host:     os.Getenv("HOST"),
-// 		Port:     os.Getenv("PORT"),
-// 		Database: os.Getenv("DATABASE"),
+// 		User:     os.Getenv("MYSQL_USER"),
+// 		Password: os.Getenv("MYSQL_PASSWORD"),
+// 		Host:     os.Getenv("MYSQL_HOST"),
+// 		Port:     os.Getenv("MYSQL_PORT"),
+// 		Database: os.Getenv("MYSQL_DATABASE"),
 // 	}
 // }
 

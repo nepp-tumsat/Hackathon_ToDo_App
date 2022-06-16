@@ -10,8 +10,11 @@ services:
       - .:/go # ホストからコンテナにマウント
     ports:
       - 8080:8080
-    depends_on:
-      - "db"
+    environment:
+      MYSQL_DATABASE: todo_db
+      MYSQL_HOST: todo_db
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: password
 
 
   db:
@@ -23,9 +26,10 @@ services:
     volumes:
       - todo-db-volume:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_HOST=%
-      - MYSQL_DATABASE=todo_db
-      - MYSQL_ROOT_PASSWORD=password
+      MYSQL_DATABASE: todo_db
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
     ports:
       - 3306:3306
 
