@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	dsn := "root:password@tcp(localhost:3306)/todo_db?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:password@tcp(db:3306)/todo_db?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	// db, err := connectDB()
 	if err != nil {
