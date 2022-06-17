@@ -7,19 +7,20 @@ import (
 )
 
 type Task struct {
-	ID     int     `json:"id" gorm:"primaryKey"`
-	UserID int64     `json:"userid"`
-	Task   string    `json:"task"`
-	Exp    int64     `json:"exp"`
+	ID     int    `json:"id" gorm:"primaryKey"`
+	UserID int64  `json:"userid"`
+	Task   string `json:"task"`
+	Exp    int64  `json:"exp"`
 	// Due    time.Time `json:"due"`
-	Due    string `json:"due"`
+	Due string `json:"due"`
 
-	Done   bool      `json:"done"`
+	Done bool `json:"done"`
 }
 
 type TaskModel interface {
 	CreateTask(task *Task) *Task
 	GetTask(id int) *Task
+	GetAllTask(userID int) []*Task
 	UpdateTask(task *Task) *Task
 }
 
@@ -44,6 +45,12 @@ func (t *taskModel) GetTask(id int) *Task {
 	task := &Task{ID: id}
 	t.db.Where(t).First(&task)
 	return task
+}
+
+func (t *taskModel) GetAllTask(userID int) []*Task {
+	var tasks []*Task
+	t.db.Where("userid = ?", "userID").Find(tasks)
+	return tasks
 }
 
 func (t *taskModel) UpdateTask(task *Task) *Task {
