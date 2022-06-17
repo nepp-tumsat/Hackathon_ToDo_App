@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PanModal
 
 final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -30,6 +31,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         title = "ToDoリスト"
         barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(click))
         navigationItem.rightBarButtonItem = barButton
+    }
+    
+    
+    @IBAction func addButtonAction(_ sender: Any) {
+        presentPanModal(AddViewController())
     }
     
     @objc func click() {
