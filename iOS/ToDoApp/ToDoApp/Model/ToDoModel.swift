@@ -8,5 +8,5 @@
 import Foundation
 
 struct ToDoModel {
-    static var ToDoList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
+    static var ToDoList = [String]()
 }

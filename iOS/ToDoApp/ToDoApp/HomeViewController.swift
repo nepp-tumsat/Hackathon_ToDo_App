@@ -6,12 +6,18 @@
 //
 
 import UIKit
+import PanModal
 
 final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 //    let ToDoList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
 
     private var barButton: UIBarButtonItem!
+    @IBOutlet weak var addButton: UIButton! {
+        didSet {
+            self.addButton.layer.cornerRadius = 25
+        }
+    }
     
     @IBOutlet private weak var toDoTableView: UITableView!
     
@@ -27,6 +33,14 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         navigationItem.rightBarButtonItem = barButton
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        toDoTableView.reloadData()
+    }
+    
+    @IBAction func addButtonAction(_ sender: Any) {
+        presentPanModal(AddViewController())
+    }
+    
     @objc func click() {
         let edit = AddViewController()
         navigationController?.pushViewController(edit, animated: true)
@@ -40,6 +54,17 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
         cell.textLabel?.text = ToDoModel.ToDoList[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            ToDoModel.ToDoList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
     }
     /*
     // MARK: - Navigation
