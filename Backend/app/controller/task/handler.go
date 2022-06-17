@@ -35,7 +35,7 @@ func (t *TaskHandler) GetAllTask(c echo.Context) error {
 	paramID := c.Param("id")
 	userID, _ := strconv.Atoi(paramID)
 
-	tasks := t.model.GetAllTask(userID)
+	tasks := t.model.GetTasks(userID)
 
 	return c.JSON(http.StatusOK, tasks)
 }

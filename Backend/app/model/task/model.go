@@ -20,7 +20,7 @@ type Task struct {
 type TaskModel interface {
 	CreateTask(task *Task) *Task
 	GetTask(id int) *Task
-	GetAllTask(userID int) []*Task
+	GetTasks(userID int) []*Task
 	UpdateTask(task *Task) *Task
 }
 
@@ -47,9 +47,9 @@ func (t *taskModel) GetTask(id int) *Task {
 	return task
 }
 
-func (t *taskModel) GetAllTask(userID int) []*Task {
+func (t *taskModel) GetTasks(userID int) []*Task {
 	var tasks []*Task
-	t.db.Where("userid = ?", "userID").Find(tasks)
+	t.db.Where("user_id = ?", userID).Find(tasks)
 	return tasks
 }
 
