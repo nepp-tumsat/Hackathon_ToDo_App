@@ -55,6 +55,17 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.textLabel?.text = ToDoModel.ToDoList[indexPath.row]
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            ToDoModel.ToDoList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
     /*
     // MARK: - Navigation
 
