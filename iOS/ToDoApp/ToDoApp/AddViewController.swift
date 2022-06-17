@@ -16,9 +16,8 @@ final class AddViewController: UIViewController {
     
     override func viewDidLoad() {
          super.viewDidLoad()
-//         view.backgroundColor = UIColor.systemMint
          
-         title = "追加"
+        textField.delegate = self
          // Do any additional setup after loading the view.
      }
 
@@ -35,6 +34,14 @@ final class AddViewController: UIViewController {
     }
     */
 
+}
+
+extension AddViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.dismiss(animated: true, completion: nil)
+        return true
+    }
 }
 
 extension AddViewController: PanModalPresentable {
