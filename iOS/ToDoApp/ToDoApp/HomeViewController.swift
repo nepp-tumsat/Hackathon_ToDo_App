@@ -12,6 +12,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 //    let ToDoList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
 
     private var barButton: UIBarButtonItem!
+    @IBOutlet weak var addButton: UIButton! {
+        didSet {
+            self.addButton.layer.cornerRadius = 25
+        }
+    }
     
     @IBOutlet private weak var toDoTableView: UITableView!
     

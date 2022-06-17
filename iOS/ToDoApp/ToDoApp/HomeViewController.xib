@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="ToDoApp" customModuleProvider="target">
             <connections>
+                <outlet property="addButton" destination="utA-jb-KOC" id="TPf-bd-Vqk"/>
                 <outlet property="toDoTableView" destination="P1a-4F-uNW" id="bv0-Nl-FIe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,22 +21,36 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="P1a-4F-uNW">
-                    <rect key="frame" x="0.0" y="84" width="414" height="812"/>
+                    <rect key="frame" x="0.0" y="84" width="414" height="712"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utA-jb-KOC">
+                    <rect key="frame" x="339" y="812" width="50" height="50"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="JLg-dp-NDw"/>
+                        <constraint firstAttribute="width" constant="50" id="gi8-rx-EVr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="plus" catalog="system"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="utA-jb-KOC" secondAttribute="trailing" constant="25" id="0dj-xf-q1l"/>
                 <constraint firstItem="P1a-4F-uNW" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="S0x-eZ-rn0"/>
                 <constraint firstAttribute="trailing" secondItem="P1a-4F-uNW" secondAttribute="trailing" id="YHE-Nt-LTS"/>
-                <constraint firstAttribute="bottom" secondItem="P1a-4F-uNW" secondAttribute="bottom" id="dwf-xh-bpp"/>
+                <constraint firstAttribute="bottom" secondItem="P1a-4F-uNW" secondAttribute="bottom" constant="100" id="dwf-xh-bpp"/>
+                <constraint firstItem="utA-jb-KOC" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="mZP-7m-kCG"/>
                 <constraint firstItem="P1a-4F-uNW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rVw-Xr-GUu"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="131.91964285714286"/>
         </view>
     </objects>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
