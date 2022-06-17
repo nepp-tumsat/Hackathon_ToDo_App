@@ -33,6 +33,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         navigationItem.rightBarButtonItem = barButton
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        toDoTableView.reloadData()
+    }
     
     @IBAction func addButtonAction(_ sender: Any) {
         presentPanModal(AddViewController())

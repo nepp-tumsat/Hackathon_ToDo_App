@@ -9,9 +9,10 @@ import UIKit
 import PanModal
 
 final class AddViewController: UIViewController {
- 
-     var button: UIBarButtonItem!
-     
+    
+    var button: UIBarButtonItem!
+    var outputText: String?
+    
     @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
@@ -40,6 +41,9 @@ extension AddViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         self.dismiss(animated: true, completion: nil)
+        outputText = textField.text
+        ToDoModel.ToDoList.append(outputText!)
+        print(ToDoModel.ToDoList)
         return true
     }
 }
