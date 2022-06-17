@@ -56,7 +56,7 @@ extension AddViewController: PanModalPresentable {
         return .contentHeight(400)
     }
     var longFormHeight: PanModalHeight {
-        return .maxHeightWithTopInset(400)
+        return .maxHeightWithTopInset(200)
     }
     var panModalBackgroundColor: UIColor {
         return UIColor.black.withAlphaComponent(0.2)
