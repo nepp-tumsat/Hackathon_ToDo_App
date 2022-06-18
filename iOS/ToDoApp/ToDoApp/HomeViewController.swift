@@ -12,12 +12,17 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
 //    let ToDoList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
 
-    private var barButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIButton! {
         didSet {
             self.addButton.layer.cornerRadius = 25
         }
     }
+    @IBOutlet weak var progressBar: UIProgressView! {
+        didSet {
+            progressBar.transform = CGAffineTransform(scaleX: 1.0, y: 8.0)
+        }
+    }
+    
     
     @IBOutlet private weak var toDoTableView: UITableView!
     
@@ -27,10 +32,6 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         
         toDoTableView.delegate = self
         toDoTableView.dataSource = self
-        
-        title = "ToDoリスト"
-        barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(click))
-        navigationItem.rightBarButtonItem = barButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,25 +48,38 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ToDoModel.ToDoList.count
+        return ToDoModel.toDoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
-        cell.textLabel?.text = ToDoModel.ToDoList[indexPath.row]
+        cell.taskLabel?.text = ToDoModel.toDoList[indexPath.row]
+        cell.expLabel?.text = "\(ToDoModel.expList[indexPath.row])exp"
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            ToDoModel.ToDoList.remove(at: indexPath.row)
+            ToDoModel.toDoList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 80
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
+        cell.deleteLine.alpha = 1
+        cell.taskLabel?.text = ToDoModel.toDoList[indexPath.row]
+        cell.expLabel?.text = "\(ToDoModel.expList[indexPath.row])exp"
+//        cell.selectionStyle = .none
+        print("\(indexPath.row)番目の行が選択されました。")
+        
+        
+    }
+    
     /*
     // MARK: - Navigation
 

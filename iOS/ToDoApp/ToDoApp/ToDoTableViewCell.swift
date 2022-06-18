@@ -8,7 +8,13 @@
 import UIKit
 
 final class ToDoTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var taskLabel: UILabel!
+    @IBOutlet weak var expLabel: UILabel!
+    @IBOutlet weak var deleteLine: UIView! {
+        didSet {
+            deleteLine.alpha = 0
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

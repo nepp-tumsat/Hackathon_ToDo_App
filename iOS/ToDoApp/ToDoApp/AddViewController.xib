@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -10,7 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddViewController" customModule="ToDoApp" customModuleProvider="target">
             <connections>
-                <outlet property="textField" destination="FbH-j4-Slm" id="M5m-gX-LkB"/>
+                <outlet property="expTextField" destination="qSa-SI-oi8" id="tzK-K7-3MC"/>
+                <outlet property="toDoTextField" destination="FbH-j4-Slm" id="M5m-gX-LkB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,8 +20,25 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FbH-j4-Slm">
-                    <rect key="frame" x="10" y="10" width="394" height="34"/>
+                <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FbH-j4-Slm">
+                    <rect key="frame" x="60" y="10" width="344" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ToDo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQE-Yo-SbE">
+                    <rect key="frame" x="10" y="15" width="40" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="獲得経験値" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOH-VQ-5Lx">
+                    <rect key="frame" x="10" y="59" width="87" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qSa-SI-oi8">
+                    <rect key="frame" x="107" y="54" width="297" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -28,9 +46,17 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemTealColor"/>
             <constraints>
+                <constraint firstItem="qSa-SI-oi8" firstAttribute="top" secondItem="FbH-j4-Slm" secondAttribute="bottom" constant="10" id="2tH-B7-Q7u"/>
+                <constraint firstItem="VOH-VQ-5Lx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="5cI-Ls-C6n"/>
+                <constraint firstItem="dQE-Yo-SbE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="9dW-Wp-BDY"/>
+                <constraint firstItem="FbH-j4-Slm" firstAttribute="leading" secondItem="dQE-Yo-SbE" secondAttribute="trailing" constant="10" id="A5f-d5-M6Q"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qSa-SI-oi8" secondAttribute="trailing" constant="10" id="Lnh-1R-xNX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FbH-j4-Slm" secondAttribute="trailing" constant="10" id="OEg-sC-O1R"/>
+                <constraint firstItem="dQE-Yo-SbE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="POd-n4-CRK"/>
+                <constraint firstItem="qSa-SI-oi8" firstAttribute="leading" secondItem="VOH-VQ-5Lx" secondAttribute="trailing" constant="10" id="Q4s-Ge-Sl9"/>
+                <constraint firstItem="FbH-j4-Slm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="SpU-7e-Mi7"/>
+                <constraint firstItem="VOH-VQ-5Lx" firstAttribute="top" secondItem="FbH-j4-Slm" secondAttribute="bottom" constant="15" id="UZ9-2e-Dcw"/>
                 <constraint firstItem="FbH-j4-Slm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="Ysd-lk-fuh"/>
-                <constraint firstItem="FbH-j4-Slm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="mlN-SL-iHN"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

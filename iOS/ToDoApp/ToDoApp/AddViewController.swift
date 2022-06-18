@@ -11,19 +11,22 @@ import PanModal
 final class AddViewController: UIViewController {
     
     var button: UIBarButtonItem!
-    var outputText: String?
+    var outputToDoText: String?
+    var outputExpText: String?
     
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var toDoTextField: UITextField!
+    @IBOutlet weak var expTextField: UITextField!
     
     override func viewDidLoad() {
          super.viewDidLoad()
-         
-        textField.delegate = self
+        expTextField.isEnabled = false
+        toDoTextField.delegate = self
+        expTextField.delegate = self
          // Do any additional setup after loading the view.
      }
 
     override func viewWillAppear(_ animated: Bool) {
-        textField.becomeFirstResponder()
+        toDoTextField.becomeFirstResponder()
     }
     /*
     // MARK: - Navigation
@@ -40,10 +43,26 @@ final class AddViewController: UIViewController {
 extension AddViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        self.dismiss(animated: true, completion: nil)
-        outputText = textField.text
-        ToDoModel.ToDoList.append(outputText!)
-        print(ToDoModel.ToDoList)
+        
+        let nextTag = textField.tag + 1
+        if let nextTextField = self.view.viewWithTag(nextTag) {
+            self.expTextField.isEnabled = true
+            nextTextField.becomeFirstResponder()
+        }
+        
+        if nextTag == 2 {
+            outputToDoText = textField.text
+            ToDoModel.toDoList.append(outputToDoText!)
+            
+        } else if nextTag > 2 {
+            
+            outputExpText = textField.text
+            ToDoModel.expList.append(outputExpText!)
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        print(ToDoModel.toDoList)
+        print(ToDoModel.expList)
         return true
     }
 }
