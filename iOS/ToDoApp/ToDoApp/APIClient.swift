@@ -32,4 +32,27 @@ final class APIClient {
         }
         task.resume()
     }
+    
+    static func addToDoAPI() {
+        var expInt = Int((AddViewController.outputExpText)!)
+        print(type(of: expInt))
+        
+        let url = URL(string: "http://localhost:8080/tasks")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST" 
+        request.httpBody = "task=\(AddViewController.outputToDoText!)&userid=1&exp=\(expInt!)&due=2022-04-01".data(using: .utf8)
+        URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) in
+            print("data: \(String(describing: data))")
+            print("response: \(String(describing: response))")
+            print("error: \(String(describing: error))")
+            print("------------------------------------")
+            do{
+                let responseData = try JSONSerialization.jsonObject(with: data!, options: [])
+                print(responseData)
+            }
+            catch {
+                print(error)
+            }
+        }).resume()
+    }
 }

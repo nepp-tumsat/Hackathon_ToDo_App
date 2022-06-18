@@ -11,8 +11,8 @@ import PanModal
 final class AddViewController: UIViewController {
     
     var button: UIBarButtonItem!
-    var outputToDoText: String?
-    var outputExpText: String?
+    static var outputToDoText: String?
+    static var outputExpText: String?
     
     @IBOutlet weak var toDoTextField: UITextField!
     @IBOutlet weak var expTextField: UITextField!
@@ -51,37 +51,15 @@ extension AddViewController: UITextFieldDelegate {
         }
         
         if nextTag == 2 {
-            outputToDoText = textField.text
-            ToDoModel.toDoList.append(outputToDoText!)
+            AddViewController.outputToDoText = textField.text
+            ToDoModel.toDoList.append(AddViewController.outputToDoText!)
             
         } else if nextTag > 2 {
             
-            outputExpText = textField.text
-            ToDoModel.expList.append(outputExpText!)
-
-//            var expInt = Int((outputExpText)!)
-//            print(expInt, "😇😇😇😇😇😇😇😇😇😇😇😇😇")
-//            print(type(of: expInt))
-//            
-//            let url = URL(string: "http://localhost:8080/tasks")!
-//            var request = URLRequest(url: url)
-//            request.httpMethod = "POST" // POSTリクエスト
-//            request.httpBody = "task=\(outputToDoText!)&userid=1&exp=\(expInt!)&due=2022-04-01".data(using: .utf8) // Bodyに情報を含める
-//            URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) in
-//                print("data: \(String(describing: data))")
-//                print("response: \(String(describing: response))")
-//                print("error: \(String(describing: error))")
-//                print("------------------------------------")
-//                do{
-//                    let responseData = try JSONSerialization.jsonObject(with: data!, options: [])
-//                    print("⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️")
-//                    print(responseData)
-//                }
-//                catch {
-//                    print("🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔")
-//                    print(error)
-//                }
-//            }).resume()
+            AddViewController.outputExpText = textField.text
+            ToDoModel.expList.append(AddViewController.outputExpText!)
+            
+            APIClient.addToDoAPI()
             
             self.dismiss(animated: true, completion: nil)
         }
