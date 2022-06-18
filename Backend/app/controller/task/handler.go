@@ -22,16 +22,16 @@ func NewTaskHandler(t taskModel.TaskModel, u userModel.UserModel) *TaskHandler {
 }
 func (t *TaskHandler) CreateTask(c echo.Context) error {
 	task := new(taskModel.Task)
-	task.Task = c.FormValue("task")
-	userid := c.FormValue("userid")
-	exp := c.FormValue("exp")
-	task.UserID,_ = strconv.Atoi(userid)
-	task.Exp,_ = strconv.Atoi(exp)
-	task.Due = c.FormValue("due")
+	// task.Task = c.FormValue("task")
+	// userid := c.FormValue("userid")
+	// exp := c.FormValue("exp")
+	// task.UserID, _ = strconv.Atoi(userid)
+	// task.Exp, _ = strconv.Atoi(exp)
+	// task.Due = c.FormValue("due")
 
-	// if err := c.Bind(task); err != nil {
-	// 	return err
-	// }
+	if err := c.Bind(task); err != nil {
+		return err
+	}
 
 	t.model.CreateTask(task)
 
