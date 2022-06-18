@@ -47,10 +47,14 @@ func (u *UserHandler) GetUser(c echo.Context) error {
 }
 
 func (u *UserHandler) UpdateUser(c echo.Context) error {
+
 	user := new(userModel.User)
 	if err := c.Bind(user); err != nil {
 		return err
 	}
+
+	new_user := u.model.FindUser(user.ID)
+	user.Level = new_user.Level
 
 	updated_user := u.model.UpdateUser(user)
 

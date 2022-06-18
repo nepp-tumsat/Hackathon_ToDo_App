@@ -44,6 +44,7 @@ func (u *userModel) UpdateUser(user *User) *User {
 	update_user := &User{ID: id}
 	u.db.First(update_user)
 	update_user.Name = user.Name
+	update_user.Level = user.Level
 	if err := u.db.Save(update_user).Error; err != nil {
 		return nil
 	}
