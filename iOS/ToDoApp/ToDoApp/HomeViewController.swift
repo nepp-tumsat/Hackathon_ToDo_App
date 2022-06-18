@@ -13,6 +13,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     var toDoList: [TaskData] = []
     
     var expSum = 0
+    var lv = 6
     
     @IBOutlet weak var addButton: UIButton! {
         didSet {
@@ -27,7 +28,11 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    @IBOutlet weak var lvLabel: UILabel!
+    @IBOutlet weak var lvLabel: UILabel! {
+        didSet {
+            lvLabel.text = "Lv.\(lv)"
+        }
+    }
     
     @IBOutlet private weak var toDoTableView: UITableView!
     
@@ -133,6 +138,20 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         
         print(expSum)
         print(Float(Float(expSum) / 100.0))
+        
+        if expSum >= 100 {
+            DispatchQueue.main.async {
+                self.progressBar.progress = 1.0
+            }
+            expSum = 0
+            lv += 1
+            lvLabel.text = "Lv.\(lv)"
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.progressBar.progress = 0
+            }
+            
+        }
         print("\(indexPath.row)番目の行が選択されました。")
         
         
