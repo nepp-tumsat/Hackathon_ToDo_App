@@ -63,7 +63,7 @@ func (t *TaskHandler) CompleteTask(c echo.Context) error {
 	t.model.UpdateTask(task)
 
 	user := t.umodel.FindUser(task.UserID)
-	user.Level += float64(task.Exp)
+	user.Level += (float64(task.Exp)) / 100
 
 	t.umodel.UpdateUser(user)
 
