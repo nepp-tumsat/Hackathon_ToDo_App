@@ -45,3 +45,14 @@ func (u *UserHandler) GetUser(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, user)
 }
+
+func (u *UserHandler) UpdateUser(c echo.Context) error {
+	user := new(userModel.User)
+	if err := c.Bind(user); err != nil {
+		return err
+	}
+
+	updated_user := u.model.UpdateUser(user)
+
+	return c.JSON(http.StatusOK, updated_user)
+}

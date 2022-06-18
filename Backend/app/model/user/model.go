@@ -40,8 +40,12 @@ func (u *userModel) FindUser(id int) *User {
 }
 
 func (u *userModel) UpdateUser(user *User) *User {
-	if err := u.db.Save(user).Error; err != nil {
+	id := user.ID
+	update_user := &User{ID: id}
+	u.db.First(update_user)
+	update_user.Name = user.Name
+	if err := u.db.Save(update_user).Error; err != nil {
 		return nil
 	}
-	return user
+	return update_user
 }
