@@ -50,7 +50,7 @@ func (t *taskModel) GetTask(id int) *Task {
 
 func (t *taskModel) GetTasks(userID int) []*Task {
 	var tasks []*Task
-	t.db.Where("user_id = ?", userID).Find(tasks)
+	t.db.Where("user_id = ?", userID).Find(&tasks)
 	return tasks
 }
 
