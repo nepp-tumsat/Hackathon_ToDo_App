@@ -23,14 +23,21 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var progressBar: UIProgressView! {
         didSet {
-            progressBar.transform = CGAffineTransform(scaleX: 1.0, y: 8.0)
+            progressBar.transform = CGAffineTransform(scaleX: 1.0, y: 4.0)
             progressBar.progress = 0
         }
     }
     
+    @IBOutlet weak var statusView: UIView! {
+        didSet {
+            statusView.layer.cornerRadius = 25
+        }
+    }
+    
+    
     @IBOutlet weak var nameLabel: UILabel! {
         didSet {
-            nameLabel.text = "名前:タロー"
+            nameLabel.text = "うっちー"
         }
     }
     
@@ -41,6 +48,13 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBOutlet private weak var toDoTableView: UITableView!
+    
+    @IBOutlet weak var iconImageView: UIImageView! {
+        didSet {
+            iconImageView.layer.cornerRadius = 35.5
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,6 +150,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.taskLabel?.text = toDoList[indexPath.row].task
         cell.expLabel?.text = "\(toDoList[indexPath.row].exp)exp"
         cell.toDoCircle?.image = UIImage(systemName: "circle.fill")
+        cell.toDoCircle?.tintColor = UIColor(212, 132, 116)
 //        cell.isUserInteractionEnabled = false
         
         expSum += toDoList[indexPath.row].exp
