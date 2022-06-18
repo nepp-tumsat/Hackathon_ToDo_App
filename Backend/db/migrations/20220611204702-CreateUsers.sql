@@ -3,7 +3,7 @@
 create table if not exists users (
   id int  NOT NULL AUTO_INCREMENT primary key ,
   name varchar(255) ,
-  level float
+  level int
   );
 -- +migrate Down
 drop table if exists users;

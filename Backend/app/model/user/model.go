@@ -7,7 +7,7 @@ import (
 type User struct {
 	ID    int     `json:"id" gorm:"primaryKey"`
 	Name  string  `json:"name"`
-	Level float64 `json:"level"`
+	Level int `json:"level"`
 }
 
 type UserModel interface {
