@@ -8,7 +8,7 @@
 import Foundation
 
 final class APIClient {
-    static func getToDoListAPI() {
+    static func getToDoListAPI(completion: @escaping(Result<[TaskData], APIError>) -> Void ) -> Void {
         let url = URL(string: "http://localhost:8080/users/1/tasks")
         
         var request = URLRequest(url: url!)
@@ -23,7 +23,7 @@ final class APIClient {
             if let data = data  {
                 do {
                     let taskList:[TaskData] = try JSONDecoder().decode([TaskData].self, from: data)
-                    
+                    completion(.success(taskList))
                     print("json:", taskList)
                 } catch {
                     print("デコードに失敗しました。:", error)
@@ -31,6 +31,7 @@ final class APIClient {
             }
         }
         task.resume()
+        return
     }
     
     static func addToDoAPI() {
