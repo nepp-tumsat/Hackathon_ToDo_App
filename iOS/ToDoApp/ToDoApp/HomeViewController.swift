@@ -42,7 +42,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
                     self.toDoTableView.reloadData()
                 }
                 
-                print(toDoResponse[0].task)
+//                print(toDoResponse[0].task)
                 print("😂😂😂😂😂😂😂😂")
                 print("😄😄😄😄😄😄😄😄😄", toDoResponse)
                 
@@ -56,7 +56,23 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        toDoTableView.reloadData()
+        Thread.sleep(forTimeInterval: 0.05)
+       
+        APIClient.getToDoListAPI(completion: { result in
+            switch result {
+            case .success(let toDoResponse):
+                self.toDoList = toDoResponse
+                print("😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅")
+                print(self.toDoList)
+                print("😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅")
+                DispatchQueue.main.async {
+                    self.toDoTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        })
+
     }
     
     @IBAction func addButtonAction(_ sender: Any) {
