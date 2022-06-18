@@ -11,8 +11,8 @@ import PanModal
 final class AddViewController: UIViewController {
     
     var button: UIBarButtonItem!
-    var outputToDoText: String?
-    var outputExpText: String?
+    static var outputToDoText: String?
+    static var outputExpText: String?
     
     @IBOutlet weak var toDoTextField: UITextField!
     @IBOutlet weak var expTextField: UITextField!
@@ -51,18 +51,27 @@ extension AddViewController: UITextFieldDelegate {
         }
         
         if nextTag == 2 {
-            outputToDoText = textField.text
-            ToDoModel.toDoList.append(outputToDoText!)
+            AddViewController.outputToDoText = textField.text
+            ToDoModel.toDoList.append(AddViewController.outputToDoText!)
             
         } else if nextTag > 2 {
             
-            outputExpText = textField.text
-            ToDoModel.expList.append(outputExpText!)
+            AddViewController.outputExpText = textField.text
+            ToDoModel.expList.append(AddViewController.outputExpText!)
+            
+            APIClient.addToDoAPI()
+            
             self.dismiss(animated: true, completion: nil)
         }
         
         print(ToDoModel.toDoList)
         print(ToDoModel.expList)
+        
+        
+        
+        
+        
+        
         return true
     }
 }

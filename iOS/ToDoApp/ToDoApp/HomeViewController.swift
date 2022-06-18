@@ -8,10 +8,10 @@
 import UIKit
 import PanModal
 
-final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, URLSessionDelegate, URLSessionDataDelegate {
 
-//    let ToDoList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
-
+    var toDoList: [TaskData] = []
+    
     @IBOutlet weak var addButton: UIButton! {
         didSet {
             self.addButton.layer.cornerRadius = 25
@@ -32,10 +32,47 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         
         toDoTableView.delegate = self
         toDoTableView.dataSource = self
+        
+        APIClient.getToDoListAPI(completion: { result in
+            switch result {
+            case .success(let toDoResponse):
+                self.toDoList = toDoResponse
+                
+                DispatchQueue.main.async {
+                    self.toDoTableView.reloadData()
+                }
+                
+//                print(toDoResponse[0].task)
+                print("😂😂😂😂😂😂😂😂")
+                print("😄😄😄😄😄😄😄😄😄", toDoResponse)
+                
+            case .failure(let error):
+                print("😍😍😍😍😍😍😍😍😍")
+                print(error)
+            }
+        })
+        
+        print(toDoList)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        toDoTableView.reloadData()
+        Thread.sleep(forTimeInterval: 0.1)
+       
+        APIClient.getToDoListAPI(completion: { result in
+            switch result {
+            case .success(let toDoResponse):
+                self.toDoList = toDoResponse
+                print("😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅")
+                print(self.toDoList)
+                print("😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅😅")
+                DispatchQueue.main.async {
+                    self.toDoTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        })
+
     }
     
     @IBAction func addButtonAction(_ sender: Any) {
@@ -48,13 +85,21 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ToDoModel.toDoList.count
+//        return ToDoModel.toDoList.count
+//        return ToDoModelSample.toDoList.count
+        
+        return toDoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
-        cell.taskLabel?.text = ToDoModel.toDoList[indexPath.row]
-        cell.expLabel?.text = "\(ToDoModel.expList[indexPath.row])exp"
+//        cell.taskLabel?.text = ToDoModel.toDoList[indexPath.row]
+//        cell.expLabel?.text = "\(ToDoModel.expList[indexPath.row])exp"
+//        cell.taskLabel?.text = ToDoModelSample.toDoList[indexPath.row]
+//        cell.expLabel?.text = "\(ToDoModelSample.expList[indexPath.row])exp"
+        
+        cell.taskLabel?.text = toDoList[indexPath.row].task
+        cell.expLabel?.text = "\(toDoList[indexPath.row].exp)exp"
         return cell
     }
     
