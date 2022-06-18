@@ -119,6 +119,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.deleteLine.alpha = 1
         cell.taskLabel?.text = toDoList[indexPath.row].task
         cell.expLabel?.text = "\(toDoList[indexPath.row].exp)exp"
+        cell.toDoCircle?.image = UIImage(systemName: "circle.fill")
 //        cell.isUserInteractionEnabled = false
         print("\(indexPath.row)番目の行が選択されました。")
         

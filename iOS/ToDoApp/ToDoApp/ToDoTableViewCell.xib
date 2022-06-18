@@ -67,6 +67,7 @@
                 <outlet property="deleteLine" destination="k5g-LW-BJm" id="n4G-GT-z78"/>
                 <outlet property="expLabel" destination="rx0-3j-BbW" id="lQH-qJ-er9"/>
                 <outlet property="taskLabel" destination="qG7-fQ-o2S" id="0JW-ZS-SIg"/>
+                <outlet property="toDoCircle" destination="SY2-B8-u4i" id="4lF-Os-sSf"/>
             </connections>
             <point key="canvasLocation" x="131.19999999999999" y="122.66009852216749"/>
         </tableViewCell>
