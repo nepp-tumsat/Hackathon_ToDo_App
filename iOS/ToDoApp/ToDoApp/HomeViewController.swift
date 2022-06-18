@@ -12,17 +12,22 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     var toDoList: [TaskData] = []
     
+    var expSum = 0
+    
     @IBOutlet weak var addButton: UIButton! {
         didSet {
             self.addButton.layer.cornerRadius = 25
         }
     }
+    
     @IBOutlet weak var progressBar: UIProgressView! {
         didSet {
             progressBar.transform = CGAffineTransform(scaleX: 1.0, y: 8.0)
+            progressBar.progress = 0
         }
     }
     
+    @IBOutlet weak var lvLabel: UILabel!
     
     @IBOutlet private weak var toDoTableView: UITableView!
     
@@ -121,6 +126,13 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.expLabel?.text = "\(toDoList[indexPath.row].exp)exp"
         cell.toDoCircle?.image = UIImage(systemName: "circle.fill")
 //        cell.isUserInteractionEnabled = false
+        
+        expSum += toDoList[indexPath.row].exp
+        
+        progressBar.progress = Float(Float(expSum) / 100.0)
+        
+        print(expSum)
+        print(Float(Float(expSum) / 100.0))
         print("\(indexPath.row)番目の行が選択されました。")
         
         

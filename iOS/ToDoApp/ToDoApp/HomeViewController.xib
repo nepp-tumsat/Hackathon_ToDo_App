@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="ToDoApp" customModuleProvider="target">
             <connections>
                 <outlet property="addButton" destination="utA-jb-KOC" id="TPf-bd-Vqk"/>
+                <outlet property="lvLabel" destination="7OG-CR-HU2" id="tIF-kY-YXU"/>
                 <outlet property="progressBar" destination="TNT-hs-HQR" id="UVn-MV-zjb"/>
                 <outlet property="toDoTableView" destination="P1a-4F-uNW" id="bv0-Nl-FIe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -116,7 +117,7 @@
         </view>
     </objects>
     <resources>
-        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="plus" catalog="system" width="32" height="32"/>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
