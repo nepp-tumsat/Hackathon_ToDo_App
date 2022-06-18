@@ -5,6 +5,7 @@ import (
 	// "fmt"
 	"log"
 	"net/http"
+
 	// "os"
 
 	"github.com/nepp-tumsat/Hackathon_ToDo_App/app/controller"
@@ -55,4 +56,3 @@ func main() {
 // func (c *dbConfig) dsn() string {
 // 	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", c.User, c.Password, c.Host, c.Port, c.Database)
 // }
-

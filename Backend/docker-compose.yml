@@ -13,7 +13,7 @@ services:
     environment:
       MYSQL_DATABASE: todo_db
       MYSQL_HOST: todo_db
-      MYSQL_USER: docker
+      MYSQL_USER: root
       MYSQL_PASSWORD: password
 
 
@@ -27,7 +27,7 @@ services:
       - todo-db-volume:/var/lib/mysql
     environment:
       MYSQL_DATABASE: todo_db
-      MYSQL_USER: docker
+      MYSQL_USER: root
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
     ports:
