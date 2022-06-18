@@ -48,18 +48,19 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ToDoModel.ToDoList.count
+        return ToDoModel.toDoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
-        cell.taskLabel?.text = ToDoModel.ToDoList[indexPath.row]
+        cell.taskLabel?.text = ToDoModel.toDoList[indexPath.row]
+        cell.expLabel?.text = "\(ToDoModel.expList[indexPath.row])exp"
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            ToDoModel.ToDoList.remove(at: indexPath.row)
+            ToDoModel.toDoList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
