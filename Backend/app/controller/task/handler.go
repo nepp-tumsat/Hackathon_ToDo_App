@@ -30,10 +30,19 @@ func (t *TaskHandler) CreateTask(c echo.Context) error {
 
 	return c.JSON(http.StatusCreated, task)
 }
+
+func (t *TaskHandler) GetAllTask(c echo.Context) error {
+	paramID := c.Param("id")
+	userID, _ := strconv.Atoi(paramID)
+
+	tasks := t.model.GetTasks(userID)
+
+	return c.JSON(http.StatusOK, tasks)
+}
+
 func (t *TaskHandler) CompleteTask(c echo.Context) error {
 	paramID := c.Param("id")
 	taskID, _ := strconv.Atoi(paramID)
-
 
 	task := t.model.GetTask(taskID)
 	if task.Done == true {
