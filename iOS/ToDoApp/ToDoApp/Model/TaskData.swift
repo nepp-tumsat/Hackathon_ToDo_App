@@ -8,10 +8,9 @@
 import Foundation
 
 struct TaskData: Codable {
-//    let id: String
-    let userid: String
+    let id, userid: Int
     let task: String
-    let exp: String
-    let due: String
-    let done: String
+        let exp: Int
+        let due: String
+        let done: Bool
 }

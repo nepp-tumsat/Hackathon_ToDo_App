@@ -33,30 +33,63 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         toDoTableView.delegate = self
         toDoTableView.dataSource = self
         
-        let url = URL(string: "http://localhost:8080/users/1/tasks")!  //URLを生成
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { data , response, error in
-           if let error = error {
-               print(error.localizedDescription)
-               print("通信が失敗しました")
-               return
-           }
-           
-           guard let data = data,
-                 let response = response as? HTTPURLResponse else {
-               print("データもしくはレスポンスがnilの状態です")
-               return
-           }
-           
-           if response.statusCode == 200 {
-               // パターン1
-               // 結果：通信結果のJSONをStringで得る。  -> { "id": 1, "name": "GOOD" }
-               print("😍😍😍😍😍😍😍😍😍😍😍😍")
-               print(String(data: data, encoding: .utf8)!)
-               
-           } else {
-               print("statusCode:\(response.statusCode)")
-           }
-        }).resume()
+//        let url = URL(string: "http://localhost:8080/users/1/tasks")!  //URLを生成
+//        let task = URLSession.shared.dataTask(with: url, completionHandler: { data , response, error in
+//           if let error = error {
+//               print(error.localizedDescription)
+//               print("通信が失敗しました")
+//               return
+//           }
+//
+//           guard let data = data,
+//                 let response = response as? HTTPURLResponse else {
+//               print("データもしくはレスポンスがnilの状態です")
+//               return
+//           }
+//
+//           if response.statusCode == 200 {
+//               // パターン1
+//               // 結果：通信結果のJSONをStringで得る。  -> { "id": 1, "name": "GOOD" }
+//               print("😍😍😍😍😍😍😍😍😍😍😍😍")
+//               print(String(data: data, encoding: .utf8)!)
+//
+//               var r = String(data: data, encoding: .utf8)!
+//               print(r)
+//
+//               let jsonData = r.data(using: .utf8)!
+//               let decoder = JSONDecoder()
+//               let catInfo:[TaskData] = try! decoder.decode([TaskData].self, from: jsonData)
+//               print(catInfo)
+//
+//
+//           } else {
+//               print("statusCode:\(response.statusCode)")
+//           }
+//    }).resume()
+        
+        let url = URL(string: "http://localhost:8080/users/1/tasks")
+
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+
+        let task = URLSession.shared.dataTask(with: url!) { (data, responds, error) in
+            if let error = error {
+                print("情報の取得に失敗しました。:", error)
+                return
+            }
+
+            if let data = data  {
+                do {
+                    let taskList:[TaskData] = try JSONDecoder().decode([TaskData].self, from: data)
+
+                    print("json:", taskList)
+                } catch {
+                    print("デコードに失敗しました。:", error)
+                }
+            }
+        }
+        task.resume()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
