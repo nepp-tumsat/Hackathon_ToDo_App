@@ -22,6 +22,7 @@ type TaskModel interface {
 	GetTask(id int) *Task
 	GetTasks(userID int) []*Task
 	UpdateTask(task *Task) *Task
+	DeleteTask(taskID int) error
 }
 
 type taskModel struct {
@@ -58,4 +59,10 @@ func (t *taskModel) UpdateTask(task *Task) *Task {
 		return nil
 	}
 	return task
+}
+
+func (t *taskModel) DeleteTask(taskID int) error {
+	task := &Task{ID: taskID}
+	t.db.Where("id = ?", taskID).Delete(task)
+	return nil
 }
