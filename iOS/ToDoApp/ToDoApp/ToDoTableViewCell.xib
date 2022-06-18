@@ -41,21 +41,30 @@
                         <rect key="frame" x="10.000000000000002" y="31" width="19.666666666666671" height="18.666666666666671"/>
                         <color key="tintColor" systemColor="labelColor"/>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5g-LW-BJm">
+                        <rect key="frame" x="34.666666666666657" y="39" width="190" height="4"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="rx0-3j-BbW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="1R7-w2-gHz"/>
                     <constraint firstItem="qG7-fQ-o2S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="ARk-cr-Cdr"/>
+                    <constraint firstItem="k5g-LW-BJm" firstAttribute="leading" secondItem="qG7-fQ-o2S" secondAttribute="leading" id="CsY-rb-fE1"/>
+                    <constraint firstItem="qG7-fQ-o2S" firstAttribute="trailing" secondItem="k5g-LW-BJm" secondAttribute="trailing" id="DTd-g0-WXc"/>
                     <constraint firstItem="SY2-B8-u4i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="F2n-6N-fUs"/>
                     <constraint firstItem="SY2-B8-u4i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="FpM-af-1FE"/>
                     <constraint firstAttribute="bottom" secondItem="qG7-fQ-o2S" secondAttribute="bottom" constant="15" id="I9T-aW-Drk"/>
                     <constraint firstAttribute="bottom" secondItem="SY2-B8-u4i" secondAttribute="bottom" constant="30" id="KBw-yK-NNg"/>
+                    <constraint firstItem="k5g-LW-BJm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="39" id="RHY-JQ-bWm"/>
                     <constraint firstAttribute="trailing" secondItem="rx0-3j-BbW" secondAttribute="trailing" constant="10" id="X8f-BV-CAv"/>
+                    <constraint firstAttribute="bottom" secondItem="k5g-LW-BJm" secondAttribute="bottom" constant="37" id="cQu-tZ-EYd"/>
                     <constraint firstAttribute="bottom" secondItem="rx0-3j-BbW" secondAttribute="bottom" constant="15" id="eH0-CJ-hpz"/>
                     <constraint firstItem="qG7-fQ-o2S" firstAttribute="leading" secondItem="SY2-B8-u4i" secondAttribute="trailing" constant="5" id="hAw-yT-xIq"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="deleteLine" destination="k5g-LW-BJm" id="n4G-GT-z78"/>
                 <outlet property="expLabel" destination="rx0-3j-BbW" id="lQH-qJ-er9"/>
                 <outlet property="taskLabel" destination="qG7-fQ-o2S" id="0JW-ZS-SIg"/>
             </connections>

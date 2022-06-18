@@ -68,6 +68,18 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
+        cell.deleteLine.alpha = 1
+        cell.taskLabel?.text = ToDoModel.toDoList[indexPath.row]
+        cell.expLabel?.text = "\(ToDoModel.expList[indexPath.row])exp"
+//        cell.selectionStyle = .none
+        print("\(indexPath.row)番目の行が選択されました。")
+        
+        
+    }
+    
     /*
     // MARK: - Navigation
 
