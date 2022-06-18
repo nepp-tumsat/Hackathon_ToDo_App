@@ -56,7 +56,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Thread.sleep(forTimeInterval: 0.05)
+        Thread.sleep(forTimeInterval: 0.1)
        
         APIClient.getToDoListAPI(completion: { result in
             switch result {
