@@ -8,7 +8,7 @@
 import UIKit
 import PanModal
 
-final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, URLSessionDelegate, URLSessionDataDelegate {
 
 //    let ToDoList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
 
@@ -32,6 +32,31 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         
         toDoTableView.delegate = self
         toDoTableView.dataSource = self
+        
+        let url = URL(string: "http://localhost:8080/users/1/tasks")!  //URLを生成
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { data , response, error in
+           if let error = error {
+               print(error.localizedDescription)
+               print("通信が失敗しました")
+               return
+           }
+           
+           guard let data = data,
+                 let response = response as? HTTPURLResponse else {
+               print("データもしくはレスポンスがnilの状態です")
+               return
+           }
+           
+           if response.statusCode == 200 {
+               // パターン1
+               // 結果：通信結果のJSONをStringで得る。  -> { "id": 1, "name": "GOOD" }
+               print("😍😍😍😍😍😍😍😍😍😍😍😍")
+               print(String(data: data, encoding: .utf8)!)
+               
+           } else {
+               print("statusCode:\(response.statusCode)")
+           }
+        }).resume()
     }
     
     override func viewWillAppear(_ animated: Bool) {

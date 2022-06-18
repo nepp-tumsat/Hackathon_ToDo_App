@@ -59,29 +59,29 @@ extension AddViewController: UITextFieldDelegate {
             outputExpText = textField.text
             ToDoModel.expList.append(outputExpText!)
 
-            var expInt = Int((outputExpText)!)
-            print(expInt, "😇😇😇😇😇😇😇😇😇😇😇😇😇")
-            print(type(of: expInt))
-            
-            let url = URL(string: "http://localhost:8080/tasks")!
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST" // POSTリクエスト
-            request.httpBody = "task=\(outputToDoText!)&userid=1&exp=\(expInt!)&due=2022-04-01".data(using: .utf8) // Bodyに情報を含める
-            URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) in
-                print("data: \(String(describing: data))")
-                print("response: \(String(describing: response))")
-                print("error: \(String(describing: error))")
-                print("------------------------------------")
-                do{
-                    let responseData = try JSONSerialization.jsonObject(with: data!, options: [])
-                    print("⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️")
-                    print(responseData)
-                }
-                catch {
-                    print("🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔")
-                    print(error)
-                }
-            }).resume()
+//            var expInt = Int((outputExpText)!)
+//            print(expInt, "😇😇😇😇😇😇😇😇😇😇😇😇😇")
+//            print(type(of: expInt))
+//            
+//            let url = URL(string: "http://localhost:8080/tasks")!
+//            var request = URLRequest(url: url)
+//            request.httpMethod = "POST" // POSTリクエスト
+//            request.httpBody = "task=\(outputToDoText!)&userid=1&exp=\(expInt!)&due=2022-04-01".data(using: .utf8) // Bodyに情報を含める
+//            URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) in
+//                print("data: \(String(describing: data))")
+//                print("response: \(String(describing: response))")
+//                print("error: \(String(describing: error))")
+//                print("------------------------------------")
+//                do{
+//                    let responseData = try JSONSerialization.jsonObject(with: data!, options: [])
+//                    print("⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️")
+//                    print(responseData)
+//                }
+//                catch {
+//                    print("🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔")
+//                    print(error)
+//                }
+//            }).resume()
             
             self.dismiss(animated: true, completion: nil)
         }
