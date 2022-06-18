@@ -70,3 +70,12 @@ func (t *TaskHandler) CompleteTask(c echo.Context) error {
 
 	return c.JSON(http.StatusCreated, user)
 }
+
+func (t *TaskHandler) DeleteTask(c echo.Context) error {
+	paramID := c.Param("id")
+	taskID, _ := strconv.Atoi(paramID)
+
+	t.model.DeleteTask(taskID)
+
+	return c.JSON(http.StatusOK, nil)
+}
