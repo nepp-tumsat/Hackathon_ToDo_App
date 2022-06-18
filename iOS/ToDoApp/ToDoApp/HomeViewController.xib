@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="ToDoApp" customModuleProvider="target">
             <connections>
                 <outlet property="addButton" destination="utA-jb-KOC" id="TPf-bd-Vqk"/>
+                <outlet property="progressBar" destination="TNT-hs-HQR" id="UVn-MV-zjb"/>
                 <outlet property="toDoTableView" destination="P1a-4F-uNW" id="bv0-Nl-FIe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -40,9 +41,41 @@
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4IC-OY-Tyb">
                     <rect key="frame" x="0.0" y="84" width="375" height="85"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avm-C5-UHB">
+                            <rect key="frame" x="30" y="10" width="100" height="21"/>
+                            <color key="backgroundColor" systemColor="systemYellowColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="nnk-EB-PAy"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7OG-CR-HU2">
+                            <rect key="frame" x="150" y="10" width="80" height="21"/>
+                            <color key="backgroundColor" systemColor="systemYellowColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="gH6-07-x0A"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TNT-hs-HQR">
+                            <rect key="frame" x="30" y="61" width="315" height="4"/>
+                        </progressView>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemGray2Color"/>
                     <constraints>
+                        <constraint firstItem="TNT-hs-HQR" firstAttribute="leading" secondItem="4IC-OY-Tyb" secondAttribute="leading" constant="30" id="LMp-aS-Xvg"/>
+                        <constraint firstAttribute="trailing" secondItem="7OG-CR-HU2" secondAttribute="trailing" constant="145" id="bBv-4L-ff5"/>
                         <constraint firstAttribute="height" constant="85" id="dHJ-xy-fBG"/>
+                        <constraint firstItem="avm-C5-UHB" firstAttribute="top" secondItem="4IC-OY-Tyb" secondAttribute="top" constant="10" id="htB-JT-dyt"/>
+                        <constraint firstItem="TNT-hs-HQR" firstAttribute="top" secondItem="avm-C5-UHB" secondAttribute="bottom" constant="30" id="iJG-nO-Lsv"/>
+                        <constraint firstItem="avm-C5-UHB" firstAttribute="leading" secondItem="4IC-OY-Tyb" secondAttribute="leading" constant="30" id="ioN-jf-nAh"/>
+                        <constraint firstItem="7OG-CR-HU2" firstAttribute="top" secondItem="4IC-OY-Tyb" secondAttribute="top" constant="10" id="khd-YH-S2w"/>
+                        <constraint firstAttribute="trailing" secondItem="TNT-hs-HQR" secondAttribute="trailing" constant="30" id="sGD-Dw-T2o"/>
                     </constraints>
                 </view>
             </subviews>
@@ -59,7 +92,7 @@
                 <constraint firstItem="utA-jb-KOC" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="mZP-7m-kCG"/>
                 <constraint firstItem="P1a-4F-uNW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rVw-Xr-GUu"/>
             </constraints>
-            <point key="canvasLocation" x="131.8840579710145" y="131.91964285714286"/>
+            <point key="canvasLocation" x="130.40000000000001" y="131.52709359605913"/>
         </view>
     </objects>
     <resources>
@@ -69,6 +102,9 @@
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -18,6 +18,12 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
             self.addButton.layer.cornerRadius = 25
         }
     }
+    @IBOutlet weak var progressBar: UIProgressView! {
+        didSet {
+            progressBar.transform = CGAffineTransform(scaleX: 1.0, y: 8.0)
+        }
+    }
+    
     
     @IBOutlet private weak var toDoTableView: UITableView!
     
