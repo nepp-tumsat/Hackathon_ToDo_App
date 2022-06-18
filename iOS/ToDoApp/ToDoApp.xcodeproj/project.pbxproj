@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		670250DC285E4CEE00D545E9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670250DB285E4CED00D545E9 /* APIClient.swift */; };
 		67E6E04E285E246400E054FD /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E6E04D285E246400E054FD /* TaskData.swift */; };
 		67F41B3B285B7B6600EB1F7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F41B3A285B7B6600EB1F7B /* AppDelegate.swift */; };
 		67F41B3D285B7B6600EB1F7B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F41B3C285B7B6600EB1F7B /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		670250DB285E4CED00D545E9 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		67E6E04D285E246400E054FD /* TaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
 		67F41B37285B7B6600EB1F7B /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67F41B3A285B7B6600EB1F7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				67F41B3C285B7B6600EB1F7B /* SceneDelegate.swift */,
 				67F41B4E285B7B9E00EB1F7B /* HomeViewController.swift */,
 				67F41B5A285B8B6E00EB1F7B /* ToDoTableViewCell.swift */,
+				670250DB285E4CED00D545E9 /* APIClient.swift */,
 				67F41B62285B996900EB1F7B /* AddViewController.swift */,
 				67F41B5E285B8F3B00EB1F7B /* UIView+Extension.swift */,
 				67F41B66285B9D7D00EB1F7B /* Model */,
@@ -245,6 +248,7 @@
 				67F41B50285B7B9E00EB1F7B /* HomeViewController.swift in Sources */,
 				67E6E04E285E246400E054FD /* TaskData.swift in Sources */,
 				67F41B5C285B8B6E00EB1F7B /* ToDoTableViewCell.swift in Sources */,
+				670250DC285E4CEE00D545E9 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
