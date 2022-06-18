@@ -5,5 +5,6 @@ import (
 )
 
 func UserRoute(e *echo.Echo, handler *UserHandler) {
-	e.POST("/users",handler.Signup)
+	e.POST("/users", handler.Signup)
+	e.GET("/users/:id", handler.GetUser)
 }

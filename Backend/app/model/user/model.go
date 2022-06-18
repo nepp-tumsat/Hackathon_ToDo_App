@@ -5,14 +5,14 @@ import (
 )
 
 type User struct {
-	ID    int64   `json:"id" gorm:"primaryKey"`
+	ID    int     `json:"id" gorm:"primaryKey"`
 	Name  string  `json:"name"`
 	Level float64 `json:"level"`
 }
 
 type UserModel interface {
 	CreateUser(user *User) *User
-	FindUser(id int64) *User
+	FindUser(id int) *User
 	UpdateUser(user *User) *User
 }
 
@@ -33,7 +33,7 @@ func (u *userModel) CreateUser(user *User) *User {
 	return user
 }
 
-func (u *userModel) FindUser(id int64) *User {
+func (u *userModel) FindUser(id int) *User {
 	user := &User{ID: id}
 	u.db.Where(u).First(&user)
 	return user

@@ -2,6 +2,7 @@ package user
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/labstack/echo"
 	userModel "github.com/nepp-tumsat/Hackathon_ToDo_App/app/model/user"
@@ -32,4 +33,15 @@ func (u *UserHandler) Signup(c echo.Context) error {
 	u.model.CreateUser(user)
 
 	return c.JSON(http.StatusCreated, user)
+}
+
+func (u *UserHandler) GetUser(c echo.Context) error {
+	paramID := c.Param("id")
+	userid, err := strconv.Atoi(paramID)
+	if err != nil {
+		panic(err)
+	}
+	user := u.model.FindUser(userid)
+
+	return c.JSON(http.StatusOK, user)
 }
