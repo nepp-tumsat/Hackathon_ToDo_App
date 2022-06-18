@@ -117,9 +117,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
         cell.deleteLine.alpha = 1
-        cell.taskLabel?.text = ToDoModel.toDoList[indexPath.row]
-        cell.expLabel?.text = "\(ToDoModel.expList[indexPath.row])exp"
-//        cell.selectionStyle = .none
+        cell.taskLabel?.text = toDoList[indexPath.row].task
+        cell.expLabel?.text = "\(toDoList[indexPath.row].exp)exp"
+//        cell.isUserInteractionEnabled = false
         print("\(indexPath.row)番目の行が選択されました。")
         
         

@@ -23,7 +23,7 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="190" id="K6X-75-cQi"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -33,7 +33,7 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="75" id="udR-vD-Yo8"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -72,7 +72,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="circle" catalog="system" width="32" height="32"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
