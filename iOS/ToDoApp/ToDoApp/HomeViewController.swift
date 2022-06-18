@@ -53,7 +53,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
-        cell.textLabel?.text = ToDoModel.ToDoList[indexPath.row]
+        cell.taskLabel?.text = ToDoModel.ToDoList[indexPath.row]
         return cell
     }
     
@@ -65,7 +65,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 80
     }
     /*
     // MARK: - Navigation
