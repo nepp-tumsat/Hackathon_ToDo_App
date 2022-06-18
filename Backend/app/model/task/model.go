@@ -8,9 +8,9 @@ import (
 
 type Task struct {
 	ID     int    `json:"id" gorm:"primaryKey"`
-	UserID int64  `json:"userid"`
+	UserID int    `json:"userid"`
 	Task   string `json:"task"`
-	Exp    int64  `json:"exp"`
+	Exp    int    `json:"exp"`
 	// Due    time.Time `json:"due"`
 	Due string `json:"due"`
 
