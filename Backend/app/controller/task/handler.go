@@ -40,6 +40,15 @@ func (t *TaskHandler) GetAllTask(c echo.Context) error {
 	return c.JSON(http.StatusOK, tasks)
 }
 
+func (t *TaskHandler) GetTask(c echo.Context) error {
+	paramID := c.Param("id")
+	taskID, _ := strconv.Atoi(paramID)
+
+	task := t.model.GetTask(taskID)
+
+	return c.JSON(http.StatusOK, task)
+}
+
 func (t *TaskHandler) CompleteTask(c echo.Context) error {
 	paramID := c.Param("id")
 	taskID, _ := strconv.Atoi(paramID)
