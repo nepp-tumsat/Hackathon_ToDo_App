@@ -12,17 +12,33 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
 
     var toDoList: [TaskData] = []
     
+    var expSum = 0
+    var lv = 6
+    
     @IBOutlet weak var addButton: UIButton! {
         didSet {
             self.addButton.layer.cornerRadius = 25
         }
     }
+    
     @IBOutlet weak var progressBar: UIProgressView! {
         didSet {
             progressBar.transform = CGAffineTransform(scaleX: 1.0, y: 8.0)
+            progressBar.progress = 0
         }
     }
     
+    @IBOutlet weak var nameLabel: UILabel! {
+        didSet {
+            nameLabel.text = "名前:タロー"
+        }
+    }
+    
+    @IBOutlet weak var lvLabel: UILabel! {
+        didSet {
+            lvLabel.text = "Lv.\(lv)"
+        }
+    }
     
     @IBOutlet private weak var toDoTableView: UITableView!
     
@@ -117,9 +133,31 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
         cell.deleteLine.alpha = 1
-        cell.taskLabel?.text = ToDoModel.toDoList[indexPath.row]
-        cell.expLabel?.text = "\(ToDoModel.expList[indexPath.row])exp"
-//        cell.selectionStyle = .none
+        cell.taskLabel?.text = toDoList[indexPath.row].task
+        cell.expLabel?.text = "\(toDoList[indexPath.row].exp)exp"
+        cell.toDoCircle?.image = UIImage(systemName: "circle.fill")
+//        cell.isUserInteractionEnabled = false
+        
+        expSum += toDoList[indexPath.row].exp
+        
+        progressBar.progress = Float(Float(expSum) / 100.0)
+        
+        print(expSum)
+        print(Float(Float(expSum) / 100.0))
+        
+        if expSum >= 100 {
+            DispatchQueue.main.async {
+                self.progressBar.progress = 1.0
+            }
+            expSum = 0
+            lv += 1
+            lvLabel.text = "Lv.\(lv)"
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.progressBar.progress = 0
+            }
+            
+        }
         print("\(indexPath.row)番目の行が選択されました。")
         
         

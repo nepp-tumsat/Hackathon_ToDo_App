@@ -15,6 +15,9 @@ final class ToDoTableViewCell: UITableViewCell {
             deleteLine.alpha = 0
         }
     }
+    
+    @IBOutlet weak var toDoCircle: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
