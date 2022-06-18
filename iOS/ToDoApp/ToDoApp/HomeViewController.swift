@@ -28,6 +28,12 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    @IBOutlet weak var nameLabel: UILabel! {
+        didSet {
+            nameLabel.text = "名前:タロー"
+        }
+    }
+    
     @IBOutlet weak var lvLabel: UILabel! {
         didSet {
             lvLabel.text = "Lv.\(lv)"

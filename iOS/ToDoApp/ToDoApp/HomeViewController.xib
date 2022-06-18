@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="addButton" destination="utA-jb-KOC" id="TPf-bd-Vqk"/>
                 <outlet property="lvLabel" destination="7OG-CR-HU2" id="tIF-kY-YXU"/>
+                <outlet property="nameLabel" destination="avm-C5-UHB" id="DTh-d8-apq"/>
                 <outlet property="progressBar" destination="TNT-hs-HQR" id="UVn-MV-zjb"/>
                 <outlet property="toDoTableView" destination="P1a-4F-uNW" id="bv0-Nl-FIe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
