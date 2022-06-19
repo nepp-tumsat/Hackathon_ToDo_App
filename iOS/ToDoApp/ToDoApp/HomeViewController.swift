@@ -223,7 +223,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         
         
 //        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
             self.animationView.removeFromSuperview()
         }
         
