@@ -7,6 +7,7 @@
 
 import UIKit
 import PanModal
+import FFPopup
 
 final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, URLSessionDelegate, URLSessionDataDelegate {
 
@@ -14,6 +15,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var expSum = 0
     var lv = 6
+    
+    var contentView: CustomAlertView?
+    var popup:FFPopup?
     
     @IBOutlet weak var addButton: UIButton! {
         didSet {
@@ -176,7 +180,47 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         print("\(indexPath.row)番目の行が選択されました。")
         
         
+        // カスタムcontentViewの作成
+        contentView = CustomAlertView()
+        contentView?.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+        
+//        // okButtonのイベント設定
+//        contentView?.okButton.addTarget(self, action: #selector(tappedOk(_:)), for: .touchUpInside)
+//        
+//        // cancelButtonのイベント設定
+//        contentView?.cancelButton.addTarget(self, action: #selector(tappedCancel(_:)), for: .touchUpInside)
+        
+        // FFPopupの初期化
+        popup = FFPopup(contentView: contentView!)
+        
+        // 中心から出現するアニメーション
+        popup?.showType = .bounceIn
+        
+        // 背景タッチしてもポップアップが消えないようにする
+        popup?.shouldDismissOnBackgroundTouch = false
+        
+        let layout = FFPopupLayout(horizontal: .center, vertical: .center)
+        
+        // popup表示
+        popup?.show(layout: layout)
     }
+    
+    
+    @objc func tappedOk(_ sender:UIButton) {
+        // 拡大して消えるアニメーション
+        popup?.dismissType = .growOut
+        popup?.dismiss(animated: true)
+        print("ok")
+    }
+    
+    // 下に消えるアニメーション
+    @objc func tappedCancel(_ sender:UIButton) {
+        popup?.dismissType = .bounceOutToBottom
+        popup?.dismiss(animated: true)
+        print("cancel")
+    }
+        
+    
     
     /*
     // MARK: - Navigation

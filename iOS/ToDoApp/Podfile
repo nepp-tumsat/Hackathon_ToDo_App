@@ -7,4 +7,5 @@ target 'ToDoApp' do
 
   # Pods for ToDoApp
 pod 'PanModal'
+pod 'FFPopup'
 end

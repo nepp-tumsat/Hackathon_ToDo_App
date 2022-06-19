@@ -1,16 +1,20 @@
 PODS:
+  - FFPopup (1.1.5)
   - PanModal (1.2.7)
 
 DEPENDENCIES:
+  - FFPopup
   - PanModal
 
 SPEC REPOS:
   trunk:
+    - FFPopup
     - PanModal
 
 SPEC CHECKSUMS:
+  FFPopup: a208dcee8db3e54ec4a88fcd6481f6f5d85b7a83
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
 
-PODFILE CHECKSUM: 36890838a2262e8f7afdcd708b09c6c9e47afee4
+PODFILE CHECKSUM: b0d23aab3aaf252d6dff4d98f24ac47cb80e761d
 
 COCOAPODS: 1.11.3
