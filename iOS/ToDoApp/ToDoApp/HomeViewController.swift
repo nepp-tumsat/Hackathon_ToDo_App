@@ -8,6 +8,7 @@
 import UIKit
 import PanModal
 import FFPopup
+import Lottie
 
 final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, URLSessionDelegate, URLSessionDataDelegate {
 
@@ -18,6 +19,9 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var contentView: CustomAlertView?
     var popup:FFPopup?
+    
+    //AnimationViewの宣言
+    var animationView = AnimationView()
     
     @IBOutlet weak var addButton: UIButton! {
         didSet {
@@ -186,7 +190,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         
 //        // okButtonのイベント設定
 //        contentView?.okButton.addTarget(self, action: #selector(tappedOk(_:)), for: .touchUpInside)
-//        
+//
 //        // cancelButtonのイベント設定
 //        contentView?.cancelButton.addTarget(self, action: #selector(tappedCancel(_:)), for: .touchUpInside)
         
@@ -197,12 +201,18 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         popup?.showType = .bounceIn
         
         // 背景タッチしてもポップアップが消えないようにする
-        popup?.shouldDismissOnBackgroundTouch = false
+        popup?.shouldDismissOnBackgroundTouch = true
         
         let layout = FFPopupLayout(horizontal: .center, vertical: .center)
         
         // popup表示
-        popup?.show(layout: layout)
+//        popup?.show(layout: layout)
+        
+        addAnimationView()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.animationView.removeFromSuperview()
+        }
     }
     
     
@@ -220,6 +230,26 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         print("cancel")
     }
         
+    
+    //アニメーションの準備
+    func addAnimationView() {
+        
+        //アニメーションファイルの指定
+        animationView = AnimationView(name: "107653-trophy") //ここに先ほどダウンロードしたファイル名を記述（拡張子は必要なし）
+        
+        //アニメーションの位置指定（画面中央）
+        animationView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        
+        //アニメーションのアスペクト比を指定＆ループで開始
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.play()
+        
+        view.bringSubviewToFront(animationView)
+        
+        //ViewControllerに配置
+        view.addSubview(animationView)
+    }
     
     
     /*

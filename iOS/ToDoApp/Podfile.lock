@@ -1,20 +1,24 @@
 PODS:
   - FFPopup (1.1.5)
+  - lottie-ios (3.3.0)
   - PanModal (1.2.7)
 
 DEPENDENCIES:
   - FFPopup
+  - lottie-ios
   - PanModal
 
 SPEC REPOS:
   trunk:
     - FFPopup
+    - lottie-ios
     - PanModal
 
 SPEC CHECKSUMS:
   FFPopup: a208dcee8db3e54ec4a88fcd6481f6f5d85b7a83
+  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
 
-PODFILE CHECKSUM: b0d23aab3aaf252d6dff4d98f24ac47cb80e761d
+PODFILE CHECKSUM: 4010ff8dd1c03db501c23f9120a010b4883be90b
 
 COCOAPODS: 1.11.3
