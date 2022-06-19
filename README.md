@@ -4,7 +4,7 @@
 
 mainブランチからdevelopブランチを切り、develop-Backend, develop-iOSのように切り、feat-○○でそれぞれ作業していく。
 
-## iOSアプリののセットアップ
+## iOSアプリのセットアップ
 CocoaPodsを利用
 ```
 pod update
