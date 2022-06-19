@@ -16,7 +16,11 @@ final class ToDoTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var toDoCircle: UIImageView!
+    @IBOutlet weak var toDoCircle: UIImageView! {
+        didSet {
+            toDoCircle.tintColor = UIColor(236, 196, 196)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

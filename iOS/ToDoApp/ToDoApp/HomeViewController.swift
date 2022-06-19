@@ -7,6 +7,9 @@
 
 import UIKit
 import PanModal
+import FFPopup
+import Lottie
+import SwiftMessages
 
 final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, URLSessionDelegate, URLSessionDataDelegate {
 
@@ -14,6 +17,12 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var expSum = 0
     var lv = 6
+    
+    var contentView: CustomAlertView?
+    var popup:FFPopup?
+    
+    //AnimationViewの宣言
+    var animationView = AnimationView()
     
     @IBOutlet weak var addButton: UIButton! {
         didSet {
@@ -23,14 +32,21 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var progressBar: UIProgressView! {
         didSet {
-            progressBar.transform = CGAffineTransform(scaleX: 1.0, y: 8.0)
+            progressBar.transform = CGAffineTransform(scaleX: 1.0, y: 4.0)
             progressBar.progress = 0
         }
     }
     
+    @IBOutlet weak var statusView: UIView! {
+        didSet {
+            statusView.layer.cornerRadius = 25
+        }
+    }
+    
+    
     @IBOutlet weak var nameLabel: UILabel! {
         didSet {
-            nameLabel.text = "名前:タロー"
+            nameLabel.text = "うっちー"
         }
     }
     
@@ -41,6 +57,13 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBOutlet private weak var toDoTableView: UITableView!
+    
+    @IBOutlet weak var iconImageView: UIImageView! {
+        didSet {
+            iconImageView.layer.cornerRadius = 35.5
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +95,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Thread.sleep(forTimeInterval: 0.1)
+        Thread.sleep(forTimeInterval: 0.5)
        
         APIClient.getToDoListAPI(completion: { result in
             switch result {
@@ -136,6 +159,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.taskLabel?.text = toDoList[indexPath.row].task
         cell.expLabel?.text = "\(toDoList[indexPath.row].exp)exp"
         cell.toDoCircle?.image = UIImage(systemName: "circle.fill")
+        cell.toDoCircle?.tintColor = UIColor(212, 132, 116)
 //        cell.isUserInteractionEnabled = false
         
         expSum += toDoList[indexPath.row].exp
@@ -145,23 +169,108 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         print(expSum)
         print(Float(Float(expSum) / 100.0))
         
+        let popupView = MessageView.viewFromNib(layout: .cardView)
+        popupView.configureTheme(.success)
+        popupView.configureContent(title: "レベルアップ！お疲れさまでした！", body: "", iconText: "🎉")
+        popupView.button?.isHidden = true
+        popupView.backgroundView.backgroundColor = UIColor(212, 132, 116)
+        var config = SwiftMessages.Config()
+        config.presentationStyle = .bottom
+        config.duration = .seconds(seconds: 4)
+        popupView.button?.isHidden = true
+        
+        // カスタムcontentViewの作成
+        contentView = CustomAlertView()
+        contentView?.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+        
+//        // okButtonのイベント設定
+//        contentView?.okButton.addTarget(self, action: #selector(tappedOk(_:)), for: .touchUpInside)
+//
+//        // cancelButtonのイベント設定
+//        contentView?.cancelButton.addTarget(self, action: #selector(tappedCancel(_:)), for: .touchUpInside)
+        
+        // FFPopupの初期化
+        popup = FFPopup(contentView: contentView!)
+        
+        // 中心から出現するアニメーション
+        popup?.showType = .bounceIn
+        
+        // 背景タッチしてもポップアップが消えないようにする
+        popup?.shouldDismissOnBackgroundTouch = true
+        
+        let layout = FFPopupLayout(horizontal: .center, vertical: .center)
+        
+        // popup表示
+//        popup?.show(layout: layout)
+        
         if expSum >= 100 {
             DispatchQueue.main.async {
                 self.progressBar.progress = 1.0
             }
             expSum = 0
-            lv += 1
-            lvLabel.text = "Lv.\(lv)"
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            SwiftMessages.show(config: config, view: popupView)
+            addAnimationView()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 self.progressBar.progress = 0
+                self.lv += 1
+                self.lvLabel.text = "Lv.\(self.lv)"
             }
             
         }
         print("\(indexPath.row)番目の行が選択されました。")
         
         
+//        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
+            self.animationView.removeFromSuperview()
+        }
+        
+        
+//        SwiftMessages.show(config: config, view: popupView)
+//
+//        addAnimationView()
     }
+    
+    
+    
+    
+    @objc func tappedOk(_ sender:UIButton) {
+        // 拡大して消えるアニメーション
+        popup?.dismissType = .growOut
+        popup?.dismiss(animated: true)
+        print("ok")
+    }
+    
+    // 下に消えるアニメーション
+    @objc func tappedCancel(_ sender:UIButton) {
+        popup?.dismissType = .bounceOutToBottom
+        popup?.dismiss(animated: true)
+        print("cancel")
+    }
+        
+    
+    //アニメーションの準備
+    func addAnimationView() {
+        
+        //アニメーションファイルの指定
+        animationView = AnimationView(name: "107653-trophy") //ここに先ほどダウンロードしたファイル名を記述（拡張子は必要なし）
+        
+        //アニメーションの位置指定（画面中央）
+        animationView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        
+        //アニメーションのアスペクト比を指定＆ループで開始
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.play()
+        
+        view.bringSubviewToFront(animationView)
+        
+        //ViewControllerに配置
+        view.addSubview(animationView)
+    }
+    
     
     /*
     // MARK: - Navigation

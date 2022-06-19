@@ -18,22 +18,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タスク" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qG7-fQ-o2S">
-                        <rect key="frame" x="34.666666666666657" y="15" width="185" height="50"/>
-                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="44.666666666666657" y="15" width="185" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="185" id="K6X-75-cQi"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="exp" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rx0-3j-BbW">
                         <rect key="frame" x="259" y="15" width="90" height="50"/>
-                        <color key="backgroundColor" systemColor="systemGray2Color"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="90" id="udR-vD-Yo8"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -42,7 +40,7 @@
                         <color key="tintColor" systemColor="labelColor"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5g-LW-BJm">
-                        <rect key="frame" x="34.666666666666657" y="39" width="185" height="4"/>
+                        <rect key="frame" x="44.666666666666657" y="39" width="185" height="4"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                     </view>
                 </subviews>
@@ -59,7 +57,7 @@
                     <constraint firstAttribute="trailing" secondItem="rx0-3j-BbW" secondAttribute="trailing" constant="10" id="X8f-BV-CAv"/>
                     <constraint firstAttribute="bottom" secondItem="k5g-LW-BJm" secondAttribute="bottom" constant="37" id="cQu-tZ-EYd"/>
                     <constraint firstAttribute="bottom" secondItem="rx0-3j-BbW" secondAttribute="bottom" constant="15" id="eH0-CJ-hpz"/>
-                    <constraint firstItem="qG7-fQ-o2S" firstAttribute="leading" secondItem="SY2-B8-u4i" secondAttribute="trailing" constant="5" id="hAw-yT-xIq"/>
+                    <constraint firstItem="qG7-fQ-o2S" firstAttribute="leading" secondItem="SY2-B8-u4i" secondAttribute="trailing" constant="15" id="hAw-yT-xIq"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -76,9 +74,6 @@
         <image name="circle" catalog="system" width="32" height="32"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
