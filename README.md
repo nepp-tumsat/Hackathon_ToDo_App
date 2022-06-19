@@ -1,5 +1,16 @@
 # Hackathon_ToDo_App
 
-ブランチ管理
+## ブランチ管理
 
-mainブランチからdevelopブランチを切り、develop-Backend, develop-iOSのように切り、feature-○○でそれぞれ作業していく。
+mainブランチからdevelopブランチを切り、develop-Backend, develop-iOSのように切り、feat-○○でそれぞれ作業していく。
+
+## iOSアプリののセットアップ
+CocoaPodsを利用
+```
+pod update
+```
+もしくは
+```
+pod install
+```
+
