@@ -9,6 +9,7 @@ import UIKit
 import PanModal
 import FFPopup
 import Lottie
+import SwiftMessages
 
 final class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, URLSessionDelegate, URLSessionDataDelegate {
 
@@ -94,7 +95,7 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Thread.sleep(forTimeInterval: 0.1)
+        Thread.sleep(forTimeInterval: 0.5)
        
         APIClient.getToDoListAPI(completion: { result in
             switch result {
@@ -168,21 +169,15 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         print(expSum)
         print(Float(Float(expSum) / 100.0))
         
-        if expSum >= 100 {
-            DispatchQueue.main.async {
-                self.progressBar.progress = 1.0
-            }
-            expSum = 0
-            lv += 1
-            lvLabel.text = "Lv.\(lv)"
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.progressBar.progress = 0
-            }
-            
-        }
-        print("\(indexPath.row)番目の行が選択されました。")
-        
+        let popupView = MessageView.viewFromNib(layout: .cardView)
+        popupView.configureTheme(.success)
+        popupView.configureContent(title: "レベルアップ！お疲れさまでした！", body: "", iconText: "🎉")
+        popupView.button?.isHidden = true
+        popupView.backgroundView.backgroundColor = UIColor(212, 132, 116)
+        var config = SwiftMessages.Config()
+        config.presentationStyle = .bottom
+        config.duration = .seconds(seconds: 4)
+        popupView.button?.isHidden = true
         
         // カスタムcontentViewの作成
         contentView = CustomAlertView()
@@ -208,12 +203,37 @@ final class HomeViewController: UIViewController, UITableViewDelegate, UITableVi
         // popup表示
 //        popup?.show(layout: layout)
         
-        addAnimationView()
+        if expSum >= 100 {
+            DispatchQueue.main.async {
+                self.progressBar.progress = 1.0
+            }
+            expSum = 0
+            
+            SwiftMessages.show(config: config, view: popupView)
+            addAnimationView()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                self.progressBar.progress = 0
+                self.lv += 1
+                self.lvLabel.text = "Lv.\(self.lv)"
+            }
+            
+        }
+        print("\(indexPath.row)番目の行が選択されました。")
         
+        
+//        
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             self.animationView.removeFromSuperview()
         }
+        
+        
+//        SwiftMessages.show(config: config, view: popupView)
+//
+//        addAnimationView()
     }
+    
+    
     
     
     @objc func tappedOk(_ sender:UIButton) {
