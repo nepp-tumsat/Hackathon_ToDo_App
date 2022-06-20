@@ -2,7 +2,7 @@
 
 ## ブランチ管理
 
-mainブランチからdevelopブランチを切り、develop-Backend, develop-iOSのように切り、feat-○○でそれぞれ作業していく。
+mainブランチからdevelopブランチを切り、develop-Backend, develop-iOSのように切り、feat/○○でそれぞれ作業していく。
 
 ## iOSアプリのセットアップ
 CocoaPodsを利用
