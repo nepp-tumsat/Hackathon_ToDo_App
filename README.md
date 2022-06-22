@@ -14,9 +14,9 @@ pod update
 pod install
 ```
 
-## Backendのセットアップ
+## DB起動
 docker-composeを使用
 ```
-docker-compose up
+docker-compose up　db
 ```
 
