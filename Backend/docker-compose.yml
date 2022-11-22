@@ -7,7 +7,7 @@ services:
     stdin_open: true
     tty: true # コンテナの永続化
     volumes:
-      - .:/go # ホストからコンテナにマウント
+      - .:/go/src/app # ホストからコンテナにマウント
     ports:
       - 8080:8080
     environment:
@@ -15,7 +15,8 @@ services:
       MYSQL_HOST: todo_db
       MYSQL_USER: root
       MYSQL_PASSWORD: password
-
+    networks:
+      - todo_network
 
   db:
     image: mysql:8.0
@@ -26,12 +27,18 @@ services:
     volumes:
       - todo-db-volume:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: todo_db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: todo_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
     ports:
       - 3306:3306
+    networks:
+      - todo_network
 
 volumes:
   todo-db-volume:
+
+networks:
+  todo_network:
+    external: true

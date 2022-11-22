@@ -1,17 +1,26 @@
-FROM golang:latest
+FROM golang:1.17-alpine
 
 ENV GOPATH=
-ENV GO111MODULE=on
-
-COPY ./app/main.go /go
-COPY ./go.mod ./go.sum /go/
-
-RUN go get github.com/labstack/echo
-RUN go get gorm.io/gorm
-RUN go get github.com/go-sql-driver/mysql
 
 WORKDIR /go
 
-CMD ["go","run", "/go/app/main.go"]
+COPY . ./
+COPY ./app/controller ./app/
+COPY ./app/model ./app/
+
+
+
+RUN apk update \
+  && apk add --no-cache git \
+  && go get -u github.com/labstack/echo \
+  && go get gorm.io/gorm \
+  && go get -u github.com/go-sql-driver/mysql \
+  && go get github.com/nepp-tumsat/Hackathon_ToDo_App/app/controller
+
+EXPOSE 8080
+
+CMD ["go", "run", "main.go"]
+
+
 
 
