@@ -6,7 +6,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/nepp-tumsat/Hackathon_ToDo_App/app/controller"
+	"github.com/nepp-tumsat/Hackathon_ToDo_App/Backend/app/controller"
+	tmodel "github.com/nepp-tumsat/Hackathon_ToDo_App/Backend/app/model/task"
+	umodel "github.com/nepp-tumsat/Hackathon_ToDo_App/Backend/app/model/user"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -18,6 +20,10 @@ func ConnectDB(dbOpen gorm.Dialector, config gorm.Option, count uint64) (db *gor
 		count--
 		log.Println("retry count:" + strconv.FormatUint(count, 10))
 	}
+
+	db.Migrator().CreateTable(umodel.User{})
+	db.Migrator().CreateTable(tmodel.Task{})
+
 	return db, err
 }
 

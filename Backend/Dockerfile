@@ -15,7 +15,7 @@ RUN apk update \
   && go get -u github.com/labstack/echo \
   && go get gorm.io/gorm \
   && go get -u github.com/go-sql-driver/mysql \
-  && go get github.com/nepp-tumsat/Hackathon_ToDo_App/app/controller
+  && go get github.com/nepp-tumsat/Hackathon_ToDo_App/Backend/app/controller
 
 EXPOSE 8080
 

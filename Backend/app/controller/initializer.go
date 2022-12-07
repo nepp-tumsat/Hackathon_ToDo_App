@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
-	"github.com/nepp-tumsat/Hackathon_ToDo_App/app/controller/task"
-	"github.com/nepp-tumsat/Hackathon_ToDo_App/app/controller/user"
+	"github.com/nepp-tumsat/Hackathon_ToDo_App/Backend/app/controller/task"
+	"github.com/nepp-tumsat/Hackathon_ToDo_App/Backend/app/controller/user"
 	"gorm.io/gorm"
 )
 

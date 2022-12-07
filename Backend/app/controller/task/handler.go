@@ -5,8 +5,8 @@ import (
 	"strconv"
 
 	"github.com/labstack/echo"
-	taskModel "github.com/nepp-tumsat/Hackathon_ToDo_App/app/model/task"
-	userModel "github.com/nepp-tumsat/Hackathon_ToDo_App/app/model/user"
+	taskModel "github.com/nepp-tumsat/Hackathon_ToDo_App/Backend/app/model/task"
+	userModel "github.com/nepp-tumsat/Hackathon_ToDo_App/Backend/app/model/user"
 )
 
 type TaskHandler struct {

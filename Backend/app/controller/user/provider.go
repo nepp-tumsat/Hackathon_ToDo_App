@@ -1,7 +1,7 @@
 package user
 
 import (
-	model "github.com/nepp-tumsat/Hackathon_ToDo_App/app/model/user"
+	model "github.com/nepp-tumsat/Hackathon_ToDo_App/Backend/app/model/user"
 	"gorm.io/gorm"
 )
 

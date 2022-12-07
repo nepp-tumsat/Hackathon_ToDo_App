@@ -1,13 +1,15 @@
 package user
 
 import (
+	taskModel "github.com/nepp-tumsat/Hackathon_ToDo_App/Backend/app/model/task"
 	"gorm.io/gorm"
 )
 
 type User struct {
-	ID    int     `json:"id" gorm:"primaryKey"`
-	Name  string  `json:"name"`
-	Level int `json:"level"`
+	ID    int              `json:"id" gorm:"primaryKey"`
+	Name  string           `json:"name"`
+	Level int              `json:"level"`
+	Task  []taskModel.Task `gorm:"foreignKey:ID`
 }
 
 type UserModel interface {

@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/labstack/echo"
-	userModel "github.com/nepp-tumsat/Hackathon_ToDo_App/app/model/user"
+	userModel "github.com/nepp-tumsat/Hackathon_ToDo_App/Backend/app/model/user"
 )
 
 type UserHandler struct {
